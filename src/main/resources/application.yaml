@@ -1,0 +1,54 @@
+spring:
+  application:
+    name: store-gateway
+
+  cloud:
+    discovery:
+      locator:
+        enabled: true
+    gateway:
+      routes:
+        - id: store-auth
+          uri: lb://store-auth
+          predicates:
+            - Path=/auth/**
+
+        - id: store-account
+          uri: lb://store-account
+          predicates:
+            - Path=/accounts/**
+
+        - id: store-aluno
+          uri: lb://store-aluno
+          predicates:
+            - Path=/aluno/**
+
+        - id: insper
+          uri: https://www.insper.edu.br
+          predicates:
+            - Path=/
+
+management:
+  endpoints:
+    web:
+      base-path: /gateway/actuator
+      exposure:
+        include: [ '*' ]
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka/}
+
+api:
+  endpoints:
+    open: >
+      POST /auth/register,
+      POST /auth/login,
+      ANY /auth/actuator,
+      ANY /accounts/actuator,
+      ANY /auth/prometheus,
+      ANY /aluno
+      ANY /aluno/info
