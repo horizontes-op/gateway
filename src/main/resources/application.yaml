@@ -56,5 +56,6 @@ api:
       ANY /accounts/actuator,
       ANY /auth/prometheus,
       ANY /aluno/**,
-      ANY /aluno/info,
-      ANY /instituicao/**
+      ANY /instituicao/**,
+      ANY /auth/**,
+      ANY /accounts/**,
