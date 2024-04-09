@@ -56,6 +56,9 @@ api:
       ANY /accounts/actuator,
       ANY /auth/prometheus,
       ANY /aluno/**,
-      ANY /instituicao/**,
+      GET /instituicao/**,  
       ANY /auth/swagger-ui.html,
       ANY /accounts/swagger-ui.html,
+      ANY /aluno/swagger-ui.html,
+      ANY /instituicao/swagger-ui.html,
+      ANY /recomendacao/**
