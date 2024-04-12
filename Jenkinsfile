@@ -1,12 +1,12 @@
 pipeline {
     agent any
     stages {
-        stage('Jenkins Gateway') {
+        stage('gateway') {
             steps {
-                echo 'Jenkins Gateway'
+                echo 'gateway'
             }
         }
-        stage('Build') { 
+        stage('build gateway') { 
             steps {
                 sh 'mvn clean install'
             }
