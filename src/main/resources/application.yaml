@@ -28,6 +28,11 @@ spring:
           predicates:
             - Path=/instituicao/**
 
+        - id: store-recomendacao
+          uri: lb://store-recomendacao
+          predicates:
+            - Path=/recomendacao/**
+
         - id: insper
           uri: https://www.insper.edu.br
           predicates:
@@ -57,4 +62,7 @@ api:
       ANY /auth/prometheus,
       ANY /aluno/**,
       ANY /aluno/info,
-      ANY /instituicao/**
+      ANY /instituicao/**,
+      ANY /recomendacao/**,
+      ANY /recomendacao
+    
