@@ -7,6 +7,24 @@ spring:
       locator:
         enabled: true
     gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:3000"
+            allowedMethods:
+            - GET
+            - POST
+            - PUT
+            - DELETE
+            - OPTIONS
+            allowedHeaders:
+            - Content-Type
+            - Authorization
+            - X-Requested-With
+            - Accept
+            - Origin
+            allowCredentials: true
+            maxAge: 3600
       routes:
         - id: store-auth
           uri: lb://store-auth
@@ -22,6 +40,7 @@ spring:
           uri: lb://store-aluno
           predicates:
             - Path=/aluno/**
+          
 
         - id: store-instituicao
           uri: lb://store-instituicao
@@ -37,6 +56,7 @@ spring:
           uri: https://www.insper.edu.br
           predicates:
             - Path=/
+          
 
 management:
   endpoints:
