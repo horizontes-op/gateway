@@ -52,11 +52,6 @@ spring:
           predicates:
             - Path=/recomendacao/**
 
-        - id: insper
-          uri: https://www.insper.edu.br
-          predicates:
-            - Path=/
-          
 
 management:
   endpoints:
