@@ -40,17 +40,24 @@ spring:
           uri: lb://store-aluno
           predicates:
             - Path=/aluno/**
-          
-
-        - id: store-instituicao
-          uri: lb://store-instituicao
-          predicates:
-            - Path=/instituicao/**
-
         - id: store-recomendacao
-          uri: lb://store-recomendacao
+          uri: https://recomendacao.api.projetohorizontes.com
           predicates:
             - Path=/recomendacao/**
+
+       
+
+          
+
+        # - id: store-instituicao
+        #   uri: lb://store-instituicao
+        #   predicates:
+        #     - Path=/instituicao/**
+
+        # - id: store-recomendacao
+        #   uri: lb://store-recomendacao
+        #   predicates:
+        #     - Path=/recomendacao/**
 
 
 management:
@@ -75,10 +82,9 @@ api:
       ANY /auth/actuator,
       ANY /accounts/actuator,
       ANY /auth/prometheus,
+      ANY /recomendacao/**,
       ANY /aluno/**,
-      GET /instituicao/**,  
       ANY /auth/swagger-ui.html,
       ANY /accounts/swagger-ui.html,
       ANY /aluno/swagger-ui.html,
-      ANY /instituicao/swagger-ui.html,
-      ANY /recomendacao/**
+  
