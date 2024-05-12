@@ -27,7 +27,7 @@ spring:
             maxAge: 3600
       routes:
         - id: auth-service
-          uri: http://auth-service:8080
+          uri: auth-service:8080
           predicates:
             - Path=/auth/**
           filters:
