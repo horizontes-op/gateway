@@ -19,6 +19,7 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
+        
         # env:
         # - name: eureka.client.service-url.defaultZone
         #   value: http://store-discovery:8761/eureka/
