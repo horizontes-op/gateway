@@ -10,7 +10,7 @@ spring:
       globalcors:
         corsConfigurations:
           '[/**]':
-            allowedOrigins: "http://localhost:3000"
+            allowedOrigins: "*"
             allowedMethods:
             - GET
             - POST
@@ -26,21 +26,28 @@ spring:
             allowCredentials: true
             maxAge: 3600
       routes:
-        - id: store-auth
-          uri: lb://store-auth
+        - id: auth-service
+          uri: auth-service:8080
           predicates:
             - Path=/auth/**
+          filters:
+            - RewritePath=/auth/(?<segment>.*), /$\{segment}
 
-        - id: store-account
-          uri: lb://store-account
+        - id: account-service
+          uri: account-service:8080
           predicates:
             - Path=/accounts/**
+          filters:
+            - RewritePath=/accounts/(?<segment>.*), /$\{segment}
 
-        - id: store-aluno
-          uri: lb://store-aluno
+        - id: aluno-service
+          uri: aluno-service:8080
           predicates:
             - Path=/aluno/**
-        - id: store-recomendacao
+          filters:
+            - RewritePath=/aluno/(?<segment>.*), /$\{segment}
+
+        - id: recomendacao
           uri: https://recomendacao.api.projetohorizontes.com
           predicates:
             - Path=/recomendacao/**
