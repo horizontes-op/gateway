@@ -12,6 +12,7 @@ spring:
           '[/**]':
             allowedOrigins:
             - "*"
+            - "http://localhost:3000"
             allowedMethods:
             - GET
             - POST
@@ -24,7 +25,7 @@ spring:
             - X-Requested-With
             - Accept
             - Origin
-            # allowCredentials: true
+            allowCredentials: true
             maxAge: 3600
       routes:
         - id: auth-service
@@ -97,5 +98,5 @@ api:
       ANY /aluno/**,
       ANY /auth/swagger-ui.html,
       ANY /accounts/swagger-ui.html,
-      ANY /aluno/swagger-ui.html,
+      ANY /aluno/swagger-ui.html
   
