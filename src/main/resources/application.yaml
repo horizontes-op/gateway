@@ -7,23 +7,15 @@ spring:
       locator:
         enabled: true
     gateway:
-      globalcors:
-        corsConfigurations:
-          '[/**]':
-            allowedOriginsPatterns:
-            - "*"
-            allowed-origin: "*" 
-            allowed-header: "*"
-            allowedMethods:
-            - GET
-            - POST
-            - PUT
-            - DELETE
-            - OPTIONS
-           
-            allowCredentials: true
-           
-            maxAge: 3600
+      cors:
+        allowed-origins: "*"
+        allowed-methods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+        allowed-headers:
+          - "*"
       routes:
         - id: auth-service
           uri: auth-service:8080
