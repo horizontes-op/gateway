@@ -11,10 +11,7 @@ spring:
         corsConfigurations:
           '[/**]':
             allowedOrigins:
-            - "http://localhost:3000"
-            - "http://186.204.121.90:8080"
-            - "http://186.204.121.90:3000"
-            - "https://recomendacao.api.projetohorizontes.com"
+            - "*"
             allowedMethods:
             - GET
             - POST
@@ -27,7 +24,7 @@ spring:
             - X-Requested-With
             - Accept
             - Origin
-            allowCredentials: true
+            # allowCredentials: true
             maxAge: 3600
       routes:
         - id: auth-service
