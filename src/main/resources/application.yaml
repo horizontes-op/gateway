@@ -27,21 +27,21 @@ spring:
             maxAge: 3600
       routes:
         - id: auth-service
-          uri: auth-service:8080
+          uri: http://auth-service:8080
           predicates:
             - Path=/auth/**
           filters:
             - RewritePath=/auth/(?<segment>.*), /$\{segment}
 
         - id: account-service
-          uri: account-service:8080
+          uri: http://account-service:8080
           predicates:
             - Path=/accounts/**
           filters:
             - RewritePath=/accounts/(?<segment>.*), /$\{segment}
 
         - id: aluno-service
-          uri: aluno-service:8080
+          uri: http://aluno-service:8080
           predicates:
             - Path=/aluno/**
           filters:
