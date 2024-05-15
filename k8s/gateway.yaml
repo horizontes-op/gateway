@@ -22,7 +22,7 @@ spec:
 
         env:
         - name: eureka.client.service-url.defaultZone
-          value: http://10.100.110.190:8761/eureka/
+          value: http://10.100.65.157:8761/eureka/
 ---
 apiVersion: v1
 kind: Service

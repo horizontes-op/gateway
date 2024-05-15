@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        K8S_PORT = 80
+    }
     stages {
         stage('gateway') {
             steps {
@@ -27,6 +30,15 @@ pipeline {
                         account.push("${env.BUILD_ID}")
                        
                     }
+                }
+            }
+        }
+
+        stage('Deploy on k8s') {
+            steps {
+                withCredentials([ string(credentialsId: 'minikube-credential', variable: 'api_token') ]) {
+                    sh "kubectl --token $api_token --server https://host.docker.internal:${env.K8S_PORT}  --insecure-skip-tls-verify=true apply -f ./k8s/gateway.yaml"
+                   
                 }
             }
         }     
