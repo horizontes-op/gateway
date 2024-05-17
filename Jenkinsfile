@@ -37,7 +37,7 @@ pipeline {
         stage('Deploy on k8s') {
             steps {
                 withCredentials([ string(credentialsId: 'minikube-credentials', variable: 'api_token') ]) {
-                    sh "kubectl --token $api_token --server https://host.docker.internal:${env.K8S_PORT}  --insecure-skip-tls-verify=true apply -f ./k8s/gateway.yaml"
+                    sh "kubectl --token $api_token --server https://1DFFCD937776EBEA58B9E0C44C7A0B9F.gr7.us-east-2.eks.amazonaws.com  --insecure-skip-tls-verify=true apply -f ./k8s/gateway.yaml"
                    
                 }
             }
