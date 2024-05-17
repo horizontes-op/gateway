@@ -17,11 +17,11 @@
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>		
-		<!-- <dependency>
+		<dependency>
 			<groupId>insper.store</groupId>
 			<artifactId>auth</artifactId>
 			<version>${project.version}</version>
-		</dependency> -->
+		</dependency>
 	  
 		<dependency>
 			<groupId>org.projectlombok</groupId>

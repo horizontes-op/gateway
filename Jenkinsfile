@@ -4,6 +4,13 @@ pipeline {
         K8S_PORT = 80
     }
     stages {
+
+
+        stage('auth') {
+             steps {
+                build job: 'auth', wait: true
+            }
+        }
         stage('gateway') {
             steps {
                 echo 'gateway'
@@ -13,7 +20,7 @@ pipeline {
             steps {
                 sh 'mvn clean install'
             }
-            
+
         } 
 
         stage('build image gateway') {
