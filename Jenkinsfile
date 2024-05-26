@@ -22,7 +22,7 @@ pipeline {
         stage('build image gateway') {
             steps {
                 script {
-                    account = docker.build("fernandowi55/gateway:${env.BUILD_ID}", "-f Dockerfile .")
+                    account = docker.build("esdrasgc/gateway:${env.BUILD_ID}", "-f Dockerfile .")
                 }
             }
         }
