@@ -17,43 +17,39 @@ spring:
         allowed-headers:
           - "*"
       routes:
-        - id: auth-service
-          uri: auth-service:8080
+        - id: store-auth
+          uri: lb://store-auth
           predicates:
             - Path=/auth/**
-          filters:
-            - RewritePath=/auth/(?<segment>.*), /$\{segment}
+          # filters:
+          #   - RewritePath=/auth/(?<segment>.*), /$\{segment}
 
-        - id: account-service
-          uri: http://account-service:8080
+        - id: store-account
+          uri: lb://store-account
           predicates:
             - Path=/accounts/**
-          filters:
-            - RewritePath=/accounts/(?<segment>.*), /$\{segment}
+          # filters:
+          #   - RewritePath=/accounts/(?<segment>.*), /$\{segment}
 
-        - id: aluno-service
-          uri: http://aluno-service:8080
+        - id: store-aluno
+          uri: lb://store-aluno
           predicates:
             - Path=/aluno/**
-          filters:
-            - RewritePath=/aluno/(?<segment>.*), /$\{segment}
+          # filters:
+          #   - RewritePath=/aluno/(?<segment>.*), /$\{segment}
 
-        - id: recomendacao
-          uri: https://recomendacao.api.projetohorizontes.com
-          predicates:
-            - Path=/recomendacao/**
-          filters:
-            - RewritePath=/recomendacao/(?<segment>.*), /$\{segment}
-
-
-       
-
-          
-
-        # - id: store-instituicao
-        #   uri: lb://store-instituicao
+        # - id: recomendacao
+        #   uri: https://recomendacao.api.projetohorizontes.com
         #   predicates:
-        #     - Path=/instituicao/**
+        #     - Path=/recomendacao/**
+        #   filters:
+        #     - RewritePath=/recomendacao/(?<segment>.*), /$\{segment}
+
+
+        - id: store-instituicao
+          uri: lb://store-instituicao
+          predicates:
+            - Path=/instituicao/**
 
         # - id: store-recomendacao
         #   uri: lb://store-recomendacao
@@ -80,11 +76,15 @@ api:
     open: >
       POST /auth/register,
       POST /auth/login,
+      GET /instituicao/**,
+      GET /instituicao**,
+      GET /instituicao,
       ANY /auth/actuator,
       ANY /accounts/actuator,
       ANY /auth/prometheus,
       ANY /recomendacao/**,
-      ANY /aluno/**,
+      GET /aluno/**,
+      POST /aluno/**,
       ANY /auth/swagger-ui.html,
       ANY /accounts/swagger-ui.html,
       ANY /aluno/swagger-ui.html
